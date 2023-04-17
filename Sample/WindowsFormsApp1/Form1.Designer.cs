@@ -31,15 +31,15 @@ namespace WindowsFormsApp1 {
             this.tbAns = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nud1 = new System.Windows.Forms.NumericUpDown();
-            this.nud2 = new System.Windows.Forms.NumericUpDown();
-            this.tbAns2 = new System.Windows.Forms.TextBox();
+            this.nudX = new System.Windows.Forms.NumericUpDown();
+            this.nudY = new System.Windows.Forms.NumericUpDown();
+            this.tbResult = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btPow = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.nud1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             this.SuspendLayout();
             // 
             // btButton
@@ -104,28 +104,28 @@ namespace WindowsFormsApp1 {
             this.label2.TabIndex = 2;
             this.label2.Text = "=";
             // 
-            // nud1
+            // nudX
             // 
-            this.nud1.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.nud1.Location = new System.Drawing.Point(35, 195);
-            this.nud1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.nud1.Name = "nud1";
-            this.nud1.Size = new System.Drawing.Size(110, 34);
-            this.nud1.TabIndex = 3;
+            this.nudX.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.nudX.Location = new System.Drawing.Point(35, 195);
+            this.nudX.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.nudX.Name = "nudX";
+            this.nudX.Size = new System.Drawing.Size(110, 34);
+            this.nudX.TabIndex = 3;
             // 
-            // nud2
+            // nudY
             // 
-            this.nud2.Location = new System.Drawing.Point(195, 195);
-            this.nud2.Name = "nud2";
-            this.nud2.Size = new System.Drawing.Size(120, 34);
-            this.nud2.TabIndex = 4;
+            this.nudY.Location = new System.Drawing.Point(195, 195);
+            this.nudY.Name = "nudY";
+            this.nudY.Size = new System.Drawing.Size(120, 34);
+            this.nudY.TabIndex = 4;
             // 
-            // tbAns2
+            // tbResult
             // 
-            this.tbAns2.Location = new System.Drawing.Point(415, 194);
-            this.tbAns2.Name = "tbAns2";
-            this.tbAns2.Size = new System.Drawing.Size(170, 34);
-            this.tbAns2.TabIndex = 5;
+            this.tbResult.Location = new System.Drawing.Point(415, 194);
+            this.tbResult.Name = "tbResult";
+            this.tbResult.Size = new System.Drawing.Size(170, 34);
+            this.tbResult.TabIndex = 5;
             // 
             // label3
             // 
@@ -175,9 +175,9 @@ namespace WindowsFormsApp1 {
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbAns2);
-            this.Controls.Add(this.nud2);
-            this.Controls.Add(this.nud1);
+            this.Controls.Add(this.tbResult);
+            this.Controls.Add(this.nudY);
+            this.Controls.Add(this.nudX);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbAns);
@@ -188,8 +188,8 @@ namespace WindowsFormsApp1 {
             this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.nud1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,9 +203,9 @@ namespace WindowsFormsApp1 {
         private System.Windows.Forms.TextBox tbAns;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown nud1;
-        private System.Windows.Forms.NumericUpDown nud2;
-        private System.Windows.Forms.TextBox tbAns2;
+        private System.Windows.Forms.NumericUpDown nudX;
+        private System.Windows.Forms.NumericUpDown nudY;
+        private System.Windows.Forms.TextBox tbResult;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

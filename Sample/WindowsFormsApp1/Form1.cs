@@ -27,14 +27,21 @@ namespace WindowsFormsApp1 {
         }
 
         private void btPow_Click(object sender, EventArgs e) {
-            int num3 = Decimal.ToInt32(nud1.Value);
-            int num4 = Decimal.ToInt32(nud2.Value);
+            int num3 = Decimal.ToInt32(nudX.Value);
+            int num4 = Decimal.ToInt32(nudY.Value);
             int pow = 1;
             for (int i = 0;i < num4;i++)
             {
-                pow = pow * num3;
+                pow *= num3;
             }
-            tbAns2.Text = pow.ToString();
+            tbResult.Text = pow.ToString();
+            /*
+            double result = Math.Pow((double)nudX.Value,(double)nudY.Value);
+            tbResult.Text = result.ToString();
+
+            //一行で書く場合
+            tbResult.Text = (Math.Pow((double)nudX.Value,(double)nudY.Value)).ToString;
+            */
         }
     }
 }
