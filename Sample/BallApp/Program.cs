@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace BallApp {
     class Program :Form {
-
         private Timer moveTimer;
         private SoccerBall soccerBall;
         private PictureBox pb;
@@ -16,13 +15,15 @@ namespace BallApp {
         private List<SoccerBall> balls = new List<SoccerBall>();//ボールインスタンス格納
         private List<PictureBox> pbs = new List<PictureBox>();  //表示用
 
+        private int clickCount = 0;
+
         static void Main(string[] args) {
             Application.Run(new Program());
         }
         public Program() {
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
-            this.Text = "BallGame";
+            this.Text = "BallGame 0個";
             this.MouseClick += Program_MouseClick;
 
             moveTimer = new Timer();
@@ -40,6 +41,8 @@ namespace BallApp {
             pb.Size = new Size(50, 50);
             pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
             pb.Parent = this;
+            this.Text = "BallGame " + (++clickCount) + "個";
+
 
             balls.Add(soccerBall);
             pbs.Add(pb);
