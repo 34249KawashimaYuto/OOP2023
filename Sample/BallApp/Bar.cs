@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace BallApp {
     class Bar : Obj {
-        public Bar(double xp, double yp): base(350, 400, @"pic\bar.png")
+        public Bar(double xp, double yp): base(xp, yp, @"pic\bar.png")
         {
             base.MoveX = xp;
             base.MoveY = yp;
         }
         //抽象クラスを継承しているので、不要なメソッドは空にする
-        public override void Move() {
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
         }
 
         public override void Move(Keys direction) {

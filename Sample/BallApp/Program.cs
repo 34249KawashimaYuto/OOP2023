@@ -31,7 +31,7 @@ namespace BallApp {
             this.KeyDown += Program_KeyDown;
             
             //バー
-            bar = new Bar(340, 520);
+            bar = new Bar(340, 500);
             pbBar = new PictureBox();
             pbBar.Image = bar.Image;
             pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
@@ -69,7 +69,7 @@ namespace BallApp {
         private void MoveTimer_Tick(object sender, EventArgs e) {
             for (int i = 0; i < balls.Count; i++)
             {
-                balls[i].Move();  //移動
+                balls[i].Move(pbBar,pbs[i]);  //移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY);
             }
         }
