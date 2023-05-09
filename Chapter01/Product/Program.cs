@@ -33,17 +33,22 @@ namespace ProductSample {
             //Console.WriteLine("10日前：" + daysBefore10.ToString("yyyy年MM日dd日"));
             #endregion
 
-            string birthday = "";
+            #region 演習2
+            string[] DayOfWeekJp = {"日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日" };
+
             Console.Write("西暦：");
-            birthday += Console.ReadLine();
+            int birthYear = int.Parse(Console.ReadLine());
             Console.Write("月：");
-            birthday += Console.ReadLine();
+            int birthMonth = int.Parse(Console.ReadLine());
             Console.Write("日：");
-            birthday += Console.ReadLine();
-            DateTime bd = System.DateTime.ParseExact(birthday, "yyyyMMdd", null);
-            DateTime date = DateTime.Today;
-            TimeSpan timeSpan = date.Subtract(bd);
-            Console.WriteLine(timeSpan);
+            int birthDay = int.Parse(Console.ReadLine());
+
+            DateTime birth = new DateTime(birthYear, birthMonth, birthDay);//日付型に
+            DateTime today = DateTime.Today;
+            TimeSpan timespan = today.Subtract(birth);//日付の計算
+            Console.WriteLine("あなたが生まれてから今日まで{0}日目です。",timespan.Days);
+            Console.WriteLine(DayOfWeekJp[(int)(birth.DayOfWeek)]);
+            #endregion
         }
     }
 }
