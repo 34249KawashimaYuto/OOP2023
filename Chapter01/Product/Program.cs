@@ -17,21 +17,33 @@ namespace ProductSample {
             //Console.WriteLine("大福もちの税込価格：" + daifuku.GetPriceIncludingTax());
             #endregion
 
-            //DateTime date = new DateTime(2023, 5, 8);
+            #region 演習1
+            ////DateTime date = new DateTime(2023, 5, 8);
 
-            //今日の日付を求める
+            ////今日の日付を求める
+            //DateTime date = DateTime.Today;
+            //Console.WriteLine("今日の日付：" + date.ToString("yyyy年MM日dd日"));
+
+            ////10日後を求める
+            //DateTime daysAfter10 = date.AddDays(10);
+            //Console.WriteLine("10日後：" + daysAfter10.ToString("yyyy年MM日dd日"));
+
+            ////10日前を求める
+            //DateTime daysBefore10 = date.AddDays(-10);
+            //Console.WriteLine("10日前：" + daysBefore10.ToString("yyyy年MM日dd日"));
+            #endregion
+
+            string birthday = "";
+            Console.Write("西暦：");
+            birthday += Console.ReadLine();
+            Console.Write("月：");
+            birthday += Console.ReadLine();
+            Console.Write("日：");
+            birthday += Console.ReadLine();
+            DateTime bd = System.DateTime.ParseExact(birthday, "yyyyMMdd", null);
             DateTime date = DateTime.Today;
-            Console.WriteLine("今日の日付：" + date.ToString("yyyy年MM日dd日"));
-
-            //10日後を求める
-            DateTime daysAfter10 = date.AddDays(10);
-            Console.WriteLine("10日後：" + daysAfter10.ToString("yyyy年MM日dd日"));
-
-            //10日前を求める
-            DateTime daysBefore10 = date.AddDays(-10);
-            Console.WriteLine("10日前：" + daysBefore10.ToString("yyyy年MM日dd日"));
-
-
+            TimeSpan timeSpan = date.Subtract(bd);
+            Console.WriteLine(timeSpan);
         }
     }
 }
