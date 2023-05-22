@@ -27,7 +27,7 @@ namespace Exercise03 {
             return dict;
         }
 
-        //店舗別売り上げを求める
+        //商品カテゴリー別売り上げを求める
         public IDictionary<string, int> GetPerCategorySales() {
             var dict = new SortedDictionary<string, int>();
             foreach (var sale in _sales) {

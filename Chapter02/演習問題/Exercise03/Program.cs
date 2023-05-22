@@ -9,15 +9,19 @@ namespace Exercise03 {
     class Program {
         static void Main(string[] args) {
             Console.WriteLine("**売上集計**");
-            Console.WriteLine("1 店舗別売り上げ");
-            Console.WriteLine("2 商品カテゴリー別売り上げ");
-            Console.Write("＞ ");
-            string choice = Console.ReadLine();
+            Console.WriteLine("1:店舗別売り上げ");
+            Console.WriteLine("2:商品カテゴリー別売り上げ");
+            Console.Write(">");
+            int choice = int.Parse(Console.ReadLine());
             var sales = new SalesCounter(@"data\sales.csv");
-            var amount = sales.GetPerStoreSales();  //初期値として店舗別売り上げを設定
-            switch (int.Parse(choice)) {
+            IDictionary<string, int> amount = new Dictionary<string, int>();
+            switch (choice) {
+                case 1:
+                    //店舗別売り上げ
+                    amount = sales.GetPerStoreSales();
+                    break;
                 case 2:
-                    //カテゴリー別売上
+                    //商品カテゴリー別売り上げ
                     amount = sales.GetPerCategorySales();                    
                     break;
             }
