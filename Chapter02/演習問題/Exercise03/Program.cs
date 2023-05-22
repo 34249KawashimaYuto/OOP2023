@@ -14,7 +14,7 @@ namespace Exercise03 {
             Console.Write("＞ ");
             string choice = Console.ReadLine();
             var sales = new SalesCounter(@"data\sales.csv");
-            var amount = sales.GetPerStoreSales();//初期値として店舗別を設定
+            var amount = sales.GetPerStoreSales();  //初期値として店舗別売り上げを設定
             switch (int.Parse(choice)) {
                 case 2:
                     //カテゴリー別売上
