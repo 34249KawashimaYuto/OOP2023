@@ -42,17 +42,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            var nums = numbers.Where(n => n >= 50);
-            foreach (var n in nums) {
-                Console.WriteLine(n);
-            }
+            //foreach (var item in numbers.Where(n => n >= 50)) {
+            //    Console.WriteLine(item);
+            //}
+            numbers.Where(n => n >= 50).ToList().ForEach(Console.WriteLine);
+
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            var twice = numbers.Select(n => n * 2);
-            foreach (var n in twice) {
-                Console.WriteLine(n);
-            }
+            //foreach (var item in numbers.Select(n => n * 2).ToList()) {
+            //    Console.WriteLine(item);
+            //}
+            numbers.Select(n => n * 2).ToList().ForEach(Console.WriteLine);
         }
     }
 }
