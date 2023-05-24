@@ -21,8 +21,10 @@ namespace Exercise02 {
 
         private static void Exercise2_1(List<string> names) {
             Console.WriteLine("*** 3.2.1 ***");
+            Console.WriteLine("都市名を入力。空行で終了");
             string line;
             do {
+                Console.Write(">");
                 line = Console.ReadLine();
                 if (string.IsNullOrEmpty(line))
                     break;
