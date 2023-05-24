@@ -34,21 +34,21 @@ namespace Exercise02 {
 
         private static void Exercise2_2(List<string> names) {
             Console.WriteLine("*** 3.2.2 ***");
-            Console.WriteLine(names.Count(n => n.Contains('o')));
+            Console.WriteLine(names.Count(s => s.Contains('o')));
             
         }
 
         private static void Exercise2_3(List<string> names) {
             Console.WriteLine("*** 3.2.3 ***");
-            foreach (var item in names.Where(s => s.Contains('o'))) {
+            foreach (var item in names.Where(s => s.Contains('o')).ToArray()) {
                 Console.WriteLine(item);
             }
         }
 
         private static void Exercise2_4(List<string> names) {
             Console.WriteLine("*** 3.2.4 ***");
-            foreach (var item in names.Where(s => s.StartsWith("B")).Select(s => s.Length)) {
-                Console.WriteLine(item);
+            foreach (var item in names.Where(s => s.StartsWith("B")).Select(s => new { s, s.Length })) {
+                Console.WriteLine("{0},{1}",item.s,item.Length);
             }
         }
     }
