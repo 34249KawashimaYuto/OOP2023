@@ -25,16 +25,12 @@ namespace Exercise01 {
 
         //4.1.3
         public YearMonth AddOneMonth() {
-            var addOneYear = Year;
-            var addOneMonth = Month;
-            if(Month == 12) {
-                addOneYear++;
-                addOneMonth++;
+            if (Month == 12) {
+                return new YearMonth(Year + 1, 1);
             }
-           else {
-                addOneMonth++;
+            else {
+                return new YearMonth(Year, Month + 1);
             }
-            return new YearMonth(addOneYear,addOneMonth);
         }
 
         //4.1.4
