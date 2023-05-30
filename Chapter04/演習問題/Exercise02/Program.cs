@@ -11,6 +11,8 @@ namespace Exercise02 {
             var ym = new YearMonth(2023, 5);
             var c21 = ym.Is21Century;
             var ymNextMonth = ym.AddOneMonth();
+
+            Console.WriteLine(ym);
         }
     }
 }
