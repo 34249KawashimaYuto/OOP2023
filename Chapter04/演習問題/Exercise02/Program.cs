@@ -58,17 +58,12 @@ namespace Exercise02 {
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
             var find = FindFirst21C(ymCollection);
-            if(find == null) {
-                Console.WriteLine("21世紀のデータはありません");
-            }
-            else {
-                Console.WriteLine(find);
-            }
+            Console.WriteLine(find?.ToString() ?? "21世紀のデータはありません");
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
-            foreach (var add in ymCollection) {
-            }
+            var array = ymCollection.Select(ym => ym.AddOneMonth()).OrderBy(ym => ym.Year).ToArray();
+            Exercise2_2(array);
         }
     }
 }
