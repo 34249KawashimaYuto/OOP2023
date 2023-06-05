@@ -25,13 +25,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            var count = 0;
-            foreach(var c in text) {
-                if(c == ' ') {
-                    count++;
-                }
-            }
-            Console.WriteLine(count);
+            var spaces = text.Count(n => n.ToString().Contains(' '));
+            Console.WriteLine(spaces);
         }
 
         private static void Exercise3_2(string text) {
@@ -53,8 +48,8 @@ namespace Exercise03 {
 
         private static void Exercise3_5(string text) {
             StringBuilder sb = new StringBuilder("");
-            foreach (var item in text.Split(' ')) {
-                sb.AppendFormat("{0} ", item);
+            foreach (var word in text.Split(' ')) {
+                sb.AppendFormat("{0} ", word);
             }
             Console.WriteLine(sb);
 
