@@ -26,7 +26,7 @@ namespace Exercise03 {
 
         private static void Exercise3_1(string text) {
             var spaces = text.Count(n => n.ToString().Contains(' '));
-            Console.WriteLine(spaces);
+            Console.WriteLine("空白数：{0}",spaces);
         }
 
         private static void Exercise3_2(string text) {
@@ -35,7 +35,7 @@ namespace Exercise03 {
 
         private static void Exercise3_3(string text) {
             var words = text.Split(' ');
-            Console.WriteLine(words.Length);
+            Console.WriteLine("単語数：{0}",words.Length);
         }
 
         private static void Exercise3_4(string text) {
