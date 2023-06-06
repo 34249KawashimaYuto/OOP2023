@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 namespace Exercise04 {
     class Program {
         static void Main(string[] args) {
+            DateTime start = new DateTime();
+            start = DateTime.Now;
 #if NonArray
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
@@ -51,6 +53,9 @@ namespace Exercise04 {
                 }
             }
 #endif
+            DateTime end = new DateTime();
+            end = DateTime.Now;
+            Console.WriteLine("実行時間：{0}秒", ((end - start).TotalMilliseconds / 1000));
         }
         //項目名を返すメソッド
         private static string Item(string item) {
