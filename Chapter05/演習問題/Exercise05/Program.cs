@@ -22,13 +22,13 @@ namespace Exercise04 {
 
 #endif
             var sw = 0;
-            foreach (var item in line.Split(';')) {
-                foreach (var item2 in item.Split('=')) {
+            foreach (var semicolon in line.Split(';')) {
+                foreach (var equal in semicolon.Split('=')) {
                     if (sw % 2 == 0) {
-                        Console.Write("{0}：", Item(item2));
+                        Console.Write("{0}：", Item(equal));
                     }
                     else {
-                        Console.WriteLine(item2);
+                        Console.WriteLine(equal);
                     }
                     sw++;
                 }
