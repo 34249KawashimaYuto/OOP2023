@@ -38,8 +38,6 @@ namespace Exercise04 {
                 foreach (var semicolon in array.Split(';')) {
                     foreach (var equal in semicolon.Split('=')) {
                         if (sw % 2 != 0) {
-                            if (sw > 0) {
-                            }
                             Console.Write("{0}：", Item(equal));
                         }
                         else {
