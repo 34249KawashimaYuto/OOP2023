@@ -29,19 +29,26 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            
+            foreach (var nums in numbers.Skip(numbers.Length-2)) {
+                Console.WriteLine(nums);
+            }
         }
 
         private static void Exercise1_3(int[] numbers) {
-            throw new NotImplementedException();
+            foreach (var strNums in numbers.ToString()) {
+                Console.Write(strNums);
+            }
+            Console.WriteLine();
         }
 
         private static void Exercise1_4(int[] numbers) {
-            throw new NotImplementedException();
+            foreach (var ascending in numbers.OrderBy(x=>x).Take(3)) {
+                Console.WriteLine(ascending);
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
-            throw new NotImplementedException();
+            Console.WriteLine(numbers.Distinct().Where(n => n > 10).Count());
         }
     }
 }
