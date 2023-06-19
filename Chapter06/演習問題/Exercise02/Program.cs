@@ -59,7 +59,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(List<Book> books) {
-            Console.WriteLine("{0}ページ", books.Where(s => s.Price >= 4000).Max(s => s.Pages));
+            Console.WriteLine("{0}ページ", books.Where(s => s.Price < 4000).Max(s => s.Pages));
         }
 
         private static void Exercise2_6(List<Book> books) {
@@ -69,8 +69,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_7(List<Book> books) {
-            foreach (var searchBooks in books.Where(s => s.Title.Contains("C#") )) {
-                Console.WriteLine("{0}：{1}円", searchBooks.Title, searchBooks.Price);
+            foreach (var searchBooks in books.Where(s => s.Title.Contains("C#") && s.Pages <= 500)) {
+                Console.WriteLine("{0}", searchBooks.Title);
             }
         }
     }
