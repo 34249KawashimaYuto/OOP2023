@@ -28,38 +28,48 @@ namespace Section01 {
 #else
             var Prefectural = new Dictionary<string, string>() { };
 
-            var prefecture = "";
-            var city = "";
-            var sw = "y";
+            //県庁所在地の登録
+            string prefecture;
+            string city;
 
             Console.WriteLine("県庁所在地の登録");
-
             Console.Write("県名：");
             prefecture = Console.ReadLine();
 
             while (prefecture != "999") {
+                Console.Write("所在地：");
+                city = Console.ReadLine();
+
+                //既に県名が存在するか？
                 if (Prefectural.ContainsKey(prefecture)) {
-                    Console.WriteLine("--既に登録されています--");
+                    Console.WriteLine("既に県名が登録されています");
                     Console.Write("上書きしますか？(y/n)：");
-                    sw = Console.ReadLine();
-                }
-                switch (sw) {
-                    case "y":
-                        Console.Write("所在地：");
-                        city = Console.ReadLine();
+                    if (Console.ReadLine() == "y") {
                         Prefectural[prefecture] = city;
-                        break;
-                    case "n":
-                        sw = "y";
-                        break;
+                    }
+                }
+                else {
+                    Prefectural[prefecture] = city;
                 }
 
                 Console.Write("県名：");
                 prefecture = Console.ReadLine();
             }
-            Console.Write("県名を入力：");
-            string search = Console.ReadLine();
-            Console.WriteLine("{0}です。", Prefectural[search]);
+
+            //表示形式
+            Console.WriteLine("1:一覧表示,2:県名指定");
+            Console.Write(">");
+            switch (Console.ReadLine()) {
+                case "1":
+                    foreach (var pref in Prefectural) {
+                        Console.WriteLine("{0}({1})",pref.Key,pref.Value);
+                    }
+                    break;
+                case "2":
+                    Console.Write("県名を入力：");
+                    Console.WriteLine("{0}です", Prefectural[Console.ReadLine()]);
+                    break;
+            }
 #endif
         }
     }
