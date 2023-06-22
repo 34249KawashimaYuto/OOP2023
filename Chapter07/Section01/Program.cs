@@ -8,7 +8,7 @@ namespace Section01 {
     class Program {
         static void Main(string[] args) {
 #if false
-            #region
+            #region サンプルコード
             var flowerDict = new Dictionary<string, int>()
             {
                 ["sunflower"] = 400,
@@ -29,8 +29,7 @@ namespace Section01 {
             var Prefectural = new Dictionary<string, string>() { };
 
             //県庁所在地の登録
-            string prefecture;
-            string city;
+            string prefecture,city;
 
             Console.WriteLine("県庁所在地の登録");
             Console.Write("県名：");
