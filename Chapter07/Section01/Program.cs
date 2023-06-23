@@ -26,10 +26,10 @@ namespace Section01 {
             Console.WriteLine("あさがおの価格は{0}円です。", flowerDict["morning glory"]);
             #endregion
 #else
-            var Prefectural = new Dictionary<string, string>() { };
+            var Prefectural = new Dictionary<string, CityInfo>() { };
 
             //県庁所在地の登録
-            string prefecture,city;
+            string prefecture,city,population;
 
             Console.WriteLine("県庁所在地の登録");
             Console.Write("県名：");
@@ -38,17 +38,20 @@ namespace Section01 {
             while (prefecture != "999") {
                 Console.Write("所在地：");
                 city = Console.ReadLine();
+                Console.Write("人口：");
+                population = Console.ReadLine();
 
                 //既に県名が存在するか？
                 if (Prefectural.ContainsKey(prefecture)) {
                     Console.WriteLine("既に県名が登録されています");
                     Console.Write("上書きしますか？(y/n)：");
                     if (Console.ReadLine() == "y") {
-                        Prefectural[prefecture] = city;
+
+                        Prefectural[prefecture] = new CityInfo { City = city, Population = int.Parse(population) };
                     }
                 }
                 else {
-                    Prefectural[prefecture] = city;
+                    Prefectural[prefecture] = new CityInfo { City = city, Population = int.Parse(population) };
                 }
 
                 Console.Write("県名：");
@@ -61,12 +64,13 @@ namespace Section01 {
             switch (Console.ReadLine()) {
                 case "1":
                     foreach (var pref in Prefectural) {
-                        Console.WriteLine("{0}({1})",pref.Key,pref.Value);
+                        Console.WriteLine("{0}【{1}(人口:{2})】",pref.Key,pref.Value.City,pref.Value.Population);
                     }
                     break;
                 case "2":
                     Console.Write("県名を入力：");
-                    Console.WriteLine("{0}です", Prefectural[Console.ReadLine()]);
+                    var search = Console.ReadLine();
+                    Console.WriteLine("{0}({1}人)です", Prefectural[search].City,Prefectural[search].Population);
                     break;
             }
 #endif

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Section01 {
     class CityInfo {
-        string City { get; set; }
-        int Population { get; set; }
+        public string City { get; set; }   //都市
+        public int Population { get; set; }    //人口
     }
 }
