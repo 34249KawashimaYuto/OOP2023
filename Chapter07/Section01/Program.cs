@@ -63,8 +63,8 @@ namespace Section01 {
             Console.Write(">");
             switch (Console.ReadLine()) {
                 case "1":
-                    foreach (var pref in Prefectural) {
-                        Console.WriteLine("{0}【{1}(人口:{2})】",pref.Key,pref.Value.City,pref.Value.Population);
+                    foreach (var pref in Prefectural.OrderByDescending(n => n.Value.Population)) {
+                        Console.WriteLine("{0}【{1}(人口:{2})】", pref.Key, pref.Value.City, pref.Value.Population);
                     }
                     break;
                 case "2":
