@@ -32,51 +32,64 @@ namespace Section02 {
             string prefecture, city, population;
 
             Console.WriteLine("<<都市の登録>>");
-            Console.Write("県名：");
-            prefecture = Console.ReadLine();
+            do {
+                Console.Write("県名：");
+                prefecture = Console.ReadLine();
+            } while (prefecture == "");
+
 
             //県名に"999"が入力されるまで
             while (Strings.StrConv(prefecture,VbStrConv.Narrow) != "999") {
-                Console.Write("市町村：");
-                city = Console.ReadLine();
-                Console.Write("人口：");
-                population = Strings.StrConv(Console.ReadLine(), VbStrConv.Narrow);
+                do {
+                    Console.Write("市町村：");
+                    city = Console.ReadLine();
+                } while (city == "");
+                do {
+                    Console.Write("人口：");
+                    population = Strings.StrConv(Console.ReadLine(), VbStrConv.Narrow);
+                } while (population == "");
 
                 //既に県名が存在するか？
-                if (Prefectural.ContainsKey(prefecture)) {   
-                    //存在する（市町村の追加）
-                    Prefectural[prefecture].Add(new CityInfo { City = city, Population = int.Parse(population) });
-                }
-                else {
-                    //存在しない（新規作成）
-                    Prefectural[prefecture] = new List<CityInfo> { new CityInfo { City = city, Population = int.Parse(population) } };
-                }
+                if (!Prefectural.ContainsKey(prefecture))
+                    Prefectural[prefecture] = new List<CityInfo>();//存在しない（新規作成）
 
-                Console.Write("県名：");
-                prefecture = Console.ReadLine();
+                Prefectural[prefecture].Add(new CityInfo { City = city, Population = int.Parse(population) });
+
+                do {
+                    Console.Write("県名：");
+                    prefecture = Console.ReadLine();
+                } while (prefecture == "");
             }
 
             //表示形式
             Console.WriteLine("1:一覧表示,2:県名指定");
-            Console.Write(">");
-            switch (Strings.StrConv(Console.ReadLine(), VbStrConv.Narrow)) {
-                //一覧表示
-                case "1":
-                    foreach (var prefList in Prefectural) {
-                        foreach (var pref in prefList.Value) {
-                            Console.WriteLine("{0}【{1}(人口:{2})】", prefList.Key, pref.City, pref.Population);
-                        }                       
-                    }
-                    break;
-                //県名指定
-                case "2":
-                    Console.Write("県名を入力：");
-                    foreach (var searchPref in Prefectural.Where(p => p.Key == Console.ReadLine())) {
-                        foreach (var pref in searchPref.Value) {
-                            Console.WriteLine("{0}({1}人)です",pref.City,pref.Population);                            
+            bool sw = true;
+            while (sw == true) {
+                sw = false;
+                Console.Write(">");
+                switch (Strings.StrConv(Console.ReadLine(), VbStrConv.Narrow)) {
+                    //一覧表示
+                    case "1":
+                        foreach (var prefList in Prefectural) {
+                            foreach (var pref in prefList.Value) {
+                                Console.WriteLine("{0}【{1}(人口:{2})】", prefList.Key, pref.City, pref.Population);
+                            }
                         }
-                    }                    
-                    break;
+                        break;
+                    //県名指定
+                    case "2":
+                        Console.Write("県名を入力：");
+                        var search = Console.ReadLine();
+                        if (Prefectural.ContainsKey(search)) {
+                            foreach (var pref in Prefectural[search]) {
+                                Console.WriteLine("{0}({1}人)です", pref.City, pref.Population);
+                            }
+                        }
+                        break;
+                    default:
+                        sw = true;
+                        break;
+                }
             }
 #endif
         }
