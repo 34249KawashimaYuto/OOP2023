@@ -14,11 +14,35 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(string text) {
-            
+            var dict = new Dictionary<Char, int>();
+            foreach (var c in text) {
+                var uc = char.ToUpper(c);
+                if ('A' <= uc && uc <= 'Z') {
+                    if (dict.ContainsKey(uc))
+                        dict[uc]++;
+                    else
+                        dict[uc] = 1;
+                }
+            }
+            foreach (var item in dict.OrderBy(d => d.Key)) {
+                Console.WriteLine("'{0}':{1}", item.Key, item.Value);
+            }
         }
 
         private static void Exercise1_2(string text) {
-            
+            var dict = new SortedDictionary<Char, int>();
+            foreach (var c in text) {
+                var uc = char.ToUpper(c);
+                if ('A' <= uc && uc <= 'Z') {
+                    if (dict.ContainsKey(uc))
+                        dict[uc]++;
+                    else
+                        dict[uc] = 1;
+                }
+            }
+            foreach (var item in dict) {
+                Console.WriteLine("'{0}':{1}", item.Key, item.Value);
+            }
         }
     }
 }
