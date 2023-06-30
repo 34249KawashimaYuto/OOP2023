@@ -20,8 +20,10 @@ namespace Exercise02 {
             Console.WriteLine();    //改行
 
             //7.2.3(Removeの呼び出し)
-            Console.WriteLine(abbrs.Remove("IOP"));
-            Console.WriteLine(abbrs.Remove("NPT"));
+            if (abbrs.Remove("NPT"))
+                Console.WriteLine(abbrs.Count);
+            if (!abbrs.Remove("NPT"))
+                Console.WriteLine("削除できません");
 
             Console.WriteLine();    //改行
 
