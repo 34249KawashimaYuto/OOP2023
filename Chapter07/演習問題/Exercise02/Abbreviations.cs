@@ -45,10 +45,8 @@ namespace Exercise02 {
         }
 
         //7.2.1
-        private int count;
         public int Count {
-            set { count = _dict.Count(); }
-            get { return count; }
+            get { return _dict.Count(); }
         }
 
         //7.2.2
