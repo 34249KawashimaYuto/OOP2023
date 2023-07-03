@@ -9,7 +9,7 @@ namespace Exercise02 {
         static void Main(string[] args) {
             var dateTime = DateTime.Today;
             foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
-                Console.WriteLine("{0}の次週の{1}：{2}",dateTime.ToString("yy/MM/dd"),dayOfWeek, NextDay(dateTime, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
+                Console.WriteLine("{0:yy/MM/dd}の次週の{1,-9}：{2:yyyy年MM月dd日(ddd)}", dateTime,dayOfWeek, NextDay(dateTime, (DayOfWeek)dayOfWeek));
             }
         }
 
