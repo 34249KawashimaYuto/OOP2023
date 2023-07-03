@@ -8,7 +8,9 @@ namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
             var dateTime = DateTime.Today;
-            Console.WriteLine(NextDay(dateTime, DayOfWeek.Monday).ToString("yyyy年M月d日(ddd)"));
+            foreach (var dayOfWeek in Enum.GetValues(typeof(DayOfWeek))) {
+                Console.WriteLine("{0}の次週の{1}：{2}",dateTime.ToString("yy/MM/dd"),dayOfWeek, NextDay(dateTime, (DayOfWeek)dayOfWeek).ToString("yyyy年MM月dd日(ddd)"));
+            }
         }
 
         private static DateTime NextDay(DateTime dateTime, DayOfWeek dayOfWeek) {
