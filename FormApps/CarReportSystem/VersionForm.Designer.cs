@@ -24,25 +24,25 @@ namespace CarReportSystem {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btOK = new System.Windows.Forms.Button();
+            this.btOk = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btOK
+            // btOk
             // 
-            this.btOK.Location = new System.Drawing.Point(211, 305);
-            this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(75, 23);
-            this.btOK.TabIndex = 0;
-            this.btOK.Text = "OK";
-            this.btOK.UseVisualStyleBackColor = true;
-            this.btOK.Click += new System.EventHandler(this.btOK_Click);
+            this.btOk.Location = new System.Drawing.Point(98, 80);
+            this.btOk.Name = "btOk";
+            this.btOk.Size = new System.Drawing.Size(91, 29);
+            this.btOk.TabIndex = 0;
+            this.btOk.Text = "OK";
+            this.btOk.UseVisualStyleBackColor = true;
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
             // VersionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 340);
-            this.Controls.Add(this.btOK);
+            this.ClientSize = new System.Drawing.Size(302, 121);
+            this.Controls.Add(this.btOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -54,6 +54,6 @@ namespace CarReportSystem {
 
         #endregion
 
-        private System.Windows.Forms.Button btOK;
+        private System.Windows.Forms.Button btOk;
     }
 }
