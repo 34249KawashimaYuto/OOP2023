@@ -134,6 +134,8 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
+            //現在時間の表示
+            timer.Start();
             //設定ファイルを逆シリアル化
             try {
                 using (var reader = XmlReader.Create("setting.xml")) {
@@ -174,6 +176,7 @@ namespace CarReportSystem {
                 CarReports[dgvCarReports.CurrentRow.Index].Maker = getSelectedMaker();
                 CarReports[dgvCarReports.CurrentRow.Index].CarName = cbCarName.Text;
                 CarReports[dgvCarReports.CurrentRow.Index].Report = tbReport.Text;
+                CarReports[dgvCarReports.CurrentRow.Index].CarImage = pbCarImage.Image;
                 dgvCarReports.Refresh();    //一覧更新
             }
         }
@@ -214,6 +217,11 @@ namespace CarReportSystem {
                 serializer.Serialize(writer, settings);
             }
 
+        }
+
+        //xミリ秒ごとに更新する処理
+        private void timer_Tick(object sender, EventArgs e) {
+            toolStripStatusLabel1.Text = DateTime.Now.ToString("yyyy年MM月dd日 HH時mm分ss秒");
         }
     }
 }
