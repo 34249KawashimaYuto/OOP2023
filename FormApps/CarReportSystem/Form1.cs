@@ -144,7 +144,8 @@ namespace CarReportSystem {
                     BackColor = Color.FromArgb(settings.MainFormColor);
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
