@@ -74,6 +74,12 @@ namespace CarReportSystem {
             }
         }
 
+        //コンボボックス履歴クリア処理
+        private void clearCB() {
+            cbAuthor.Items.Clear();
+            cbCarName.Items.Clear();
+        }
+
         //項目クリア処理
         private void editItemsClear() {
             cbAuthor.Text = "";
@@ -252,11 +258,23 @@ namespace CarReportSystem {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
+
+                        clearCB();//コンボボックスの履歴削除
                         //コンボボックスへ履歴表示
+#if true
                         foreach (var item in CarReports) {
                             setCbAuthor(item.Author);
                             setCbCarName(item.CarName);
                         }
+#else
+                        //または以下の方法
+                        foreach (var author in CarReports.Select(p => p.Author)) {
+                            setCbAuthor(author);
+                        }
+                        foreach (var carName in CarReports.Select(p => p.CarName)) {
+                            setCbAuthor(carName);
+                        }
+#endif
                         dgvCarReports.ClearSelection();//レポートの選択解除
                     }
                 }
