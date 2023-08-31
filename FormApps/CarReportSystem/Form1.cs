@@ -143,8 +143,9 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
-            //現在時間の表示
-            timer.Start();
+            timer.Start();//現在時間の表示
+            dgvCarReports.RowsDefaultCellStyle.BackColor = Color.AliceBlue;//全体に色を設定
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.FloralWhite;//奇数行の色を上書き設定
             //設定ファイルを逆シリアル化
             try {
                 using (var reader = XmlReader.Create("setting.xml")) {
@@ -165,7 +166,7 @@ namespace CarReportSystem {
         }
 
         //レコードの選択時
-        private void dgvCarReports_Click(object sender, EventArgs e) {
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (dgvCarReports.Rows.Count != 0) {
                 dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
                 cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
@@ -275,6 +276,7 @@ namespace CarReportSystem {
                             setCbAuthor(carName);
                         }
 #endif
+                        editItemsClear();
                         dgvCarReports.ClearSelection();//レポートの選択解除
                     }
                 }
