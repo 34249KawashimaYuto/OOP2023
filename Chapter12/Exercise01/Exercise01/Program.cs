@@ -26,7 +26,7 @@ namespace Exercise01 {
             Exercise1_4("employees.json");
 
             // これは確認用
-            //Console.WriteLine(File.ReadAllText("employees.json"));
+            Console.WriteLine(File.ReadAllText("employees.json"));
         }
 
         private static void Exercise1_1(string v) {
@@ -105,6 +105,8 @@ namespace Exercise01 {
                 var serializer = new DataContractJsonSerializer(employee.GetType());
                 serializer.WriteObject(stream, employee);
             }
+            //逆シリアル化
+            /*
             using(var stream = new FileStream(v, FileMode.Open, FileAccess.Read)) {
                 var serializer = new DataContractJsonSerializer(typeof(Employee[]));
                 var emp = serializer.ReadObject(stream) as Employee[];
@@ -112,6 +114,7 @@ namespace Exercise01 {
                     Console.WriteLine(employee2);
                 }
             }
+            */
         }
     }
 }
