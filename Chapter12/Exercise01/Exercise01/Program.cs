@@ -45,9 +45,7 @@ namespace Exercise01 {
             using(var reader = XmlReader.Create(v)) {
                 var serializer = new XmlSerializer(typeof(Employee));
                 var emp = serializer.Deserialize(reader) as Employee;
-                Console.WriteLine(emp.Id);
-                Console.WriteLine(emp.Name);
-                Console.WriteLine(emp.HireDate);
+                Console.WriteLine(emp);
             }
         }
 
