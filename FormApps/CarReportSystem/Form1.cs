@@ -43,17 +43,18 @@ namespace CarReportSystem {
                 return;
             }
 
-            //Saleインスタンスを生成
-            var carReport = new CarReport
-            {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image,
-            };
-            CarReports.Add(carReport);
+            DataRow newRow = infosys202325DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = !pbCarImage.Image.Equals(null) ?
+                        ImageToByteArray(pbCarImage.Image) : null;
+            //newRow[6] = ImageToByteArray(pbCarImage.Image);
+
+            infosys202325DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202325DataSet.CarReportTable);
 
             setCbAuthor(cbAuthor.Text);     //記録者コンボボックスの履歴登録処理
             setCbCarName(cbCarName.Text);   //車名コンボボックスの履歴登録処理
@@ -134,13 +135,13 @@ namespace CarReportSystem {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
-            if(ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
                 pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
-            }                
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            
+
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
@@ -162,7 +163,8 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+            this.carReportTableTableAdapter.Update(infosys202325DataSet.CarReportTable);
             editItemsClear();
         }
 
@@ -196,7 +198,7 @@ namespace CarReportSystem {
         }
 
         private void カラーToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(cdColor.ShowDialog() == DialogResult.OK) {
+            if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
                 settings.MainFormColor = cdColor.Color.ToArgb();
             }
@@ -212,7 +214,7 @@ namespace CarReportSystem {
         //アプリ終了時のイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルのシリアル化
-            using(var writer = XmlWriter.Create("setting.xml")) {
+            using (var writer = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }
@@ -225,7 +227,7 @@ namespace CarReportSystem {
         }
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
+            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
                 //バイナリ形式でシリアル化
                 try {
                     var bf = new BinaryFormatter();
@@ -244,7 +246,7 @@ namespace CarReportSystem {
                 //逆シリアル化でバイナリ形式を取り込む
                 try {
                     var bf = new BinaryFormatter();
-                    using(FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
+                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
