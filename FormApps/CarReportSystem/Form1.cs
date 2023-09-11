@@ -15,7 +15,7 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
-        BindingList<CarReport> CarReports = new BindingList<CarReport>();
+        //BindingList<CarReport> CarReports = new BindingList<CarReport>();
         private int mode;
 
         //設定情報保存用オブジェクト
@@ -49,8 +49,6 @@ namespace CarReportSystem {
             newRow[3] = getSelectedMaker();
             newRow[4] = cbCarName.Text;
             newRow[5] = tbReport.Text;
-            /*newRow[6] = pbCarImage.Image.Equals(null) ?
-                        ImageToByteArray(pbCarImage.Image) : null;*/
             newRow[6] = ImageToByteArray(pbCarImage.Image);
 
             infosys202325DataSet.CarReportTable.Rows.Add(newRow);
@@ -227,7 +225,7 @@ namespace CarReportSystem {
         }
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
+            /*if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
                 //バイナリ形式でシリアル化
                 try {
                     var bf = new BinaryFormatter();
@@ -238,11 +236,11 @@ namespace CarReportSystem {
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
-            }
+            }*/
         }
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+            /*if (ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
                 //逆シリアル化でバイナリ形式を取り込む
                 try {
                     var bf = new BinaryFormatter();
@@ -266,7 +264,7 @@ namespace CarReportSystem {
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
-            }
+            }*/
         }
 
         //レコードの選択時
@@ -317,6 +315,20 @@ namespace CarReportSystem {
 
         //接続ボタンイベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202325DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableTableAdapter.Fill(this.infosys202325DataSet.CarReportTable);
+
+            dgvCarReports.ClearSelection();//レポートの選択解除
+
+            clearCB();//コンボボックスの履歴削除
+            //コンボボックスへ履歴表示
+            foreach (var item in infosys202325DataSet.CarReportTable) {
+                setCbAuthor(item.Auther);
+                setCbCarName(item.CarName);
+            }
+        }
+
+        private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202325DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202325DataSet.CarReportTable);
 
