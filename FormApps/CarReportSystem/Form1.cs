@@ -331,5 +331,17 @@ namespace CarReportSystem {
                 setCbCarName(item.CarName);
             }
         }
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202325DataSet.CarReportTable,tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202325DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202325DataSet.CarReportTable, dtpDateSearch.Text);
+        }
     }
 }
