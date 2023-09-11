@@ -314,21 +314,11 @@ namespace CarReportSystem {
         }
 
         //接続ボタンイベントハンドラ
-        private void btConnection_Click(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202325DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableTableAdapter.Fill(this.infosys202325DataSet.CarReportTable);
-
-            dgvCarReports.ClearSelection();//レポートの選択解除
-
-            clearCB();//コンボボックスの履歴削除
-            //コンボボックスへ履歴表示
-            foreach (var item in infosys202325DataSet.CarReportTable) {
-                setCbAuthor(item.Auther);
-                setCbCarName(item.CarName);
-            }
+        private void 接続NToolStripMenuItem_Click(object sender, EventArgs e) {
+            dbConnection();
         }
 
-        private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void dbConnection() {
             // TODO: このコード行はデータを 'infosys202325DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202325DataSet.CarReportTable);
 
