@@ -49,9 +49,9 @@ namespace CarReportSystem {
             newRow[3] = getSelectedMaker();
             newRow[4] = cbCarName.Text;
             newRow[5] = tbReport.Text;
-            newRow[6] = !pbCarImage.Image.Equals(null) ?
-                        ImageToByteArray(pbCarImage.Image) : null;
-            //newRow[6] = ImageToByteArray(pbCarImage.Image);
+            /*newRow[6] = pbCarImage.Image.Equals(null) ?
+                        ImageToByteArray(pbCarImage.Image) : null;*/
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
 
             infosys202325DataSet.CarReportTable.Rows.Add(newRow);
             this.carReportTableTableAdapter.Update(infosys202325DataSet.CarReportTable);
@@ -280,10 +280,13 @@ namespace CarReportSystem {
 
                 /*if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
                     pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
-                }else {
+                }
+                else {
                     pbCarImage.Image = null;
                 }*/
-                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                                    && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
                                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
 
                 btModifyReport.Enabled = true;     //修正ボタン有効
@@ -312,13 +315,19 @@ namespace CarReportSystem {
             return b;
         }
 
-
         //接続ボタンイベントハンドラ
         private void btConnection_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202325DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202325DataSet.CarReportTable);
 
             dgvCarReports.ClearSelection();//レポートの選択解除
+
+            clearCB();//コンボボックスの履歴削除
+            //コンボボックスへ履歴表示
+            foreach (var item in infosys202325DataSet.CarReportTable) {
+                setCbAuthor(item.Auther);
+                setCbCarName(item.CarName);
+            }
         }
     }
 }
