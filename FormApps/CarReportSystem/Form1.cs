@@ -139,7 +139,7 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-
+            dgvCarReports.Columns[0].Visible = false;   //ID項目非表示
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //修正ボタン無効
             btDeleteReport.Enabled = false; //削除ボタン無効
@@ -341,7 +341,15 @@ namespace CarReportSystem {
         }
 
         private void btDateSearch_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202325DataSet.CarReportTable, dtpDateSearch.Text);
+            carReportTableTableAdapter.FillByDate(this.infosys202325DataSet.CarReportTable,dtpDateSearch.Text,dtpDateSearchFinish.Text);
+        }
+
+        private void btSearchReset_Click(object sender, EventArgs e) {
+            tbAuthorSearch.Text = "";
+            tbCarNameSearch.Text = "";
+            dtpDateSearch.Value = DateTime.Now;
+            dtpDateSearchFinish.Value = DateTime.Now;
+            dbConnection();
         }
     }
 }
