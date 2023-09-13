@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleEntityFramework.Models {
-    class Book {
+    public class Book {
         public int Id { get; set; } //主キー
         public string Title { get; set; }
         public int PublishedYear { get; set; }
