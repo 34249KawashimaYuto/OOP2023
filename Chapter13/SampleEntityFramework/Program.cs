@@ -142,7 +142,7 @@ namespace SampleEntityFramework {
         private static void Exercise1_5() {
             using (var db = new BooksDbContext()) {
                 foreach (var authors in db.Authors.OrderByDescending(a => a.Birthday).ToList()){
-                    Console.WriteLine("{0} {1}", authors.Name.PadRight(7,'　'), authors.Birthday);
+                    Console.WriteLine("{0} {1:yyyy/MM/dd}", authors.Name.PadRight(6,'　'), authors.Birthday);
                     foreach (var books in db.Books.Where(b => b.Author.Id.Equals(authors.Id)).ToList()) {
                         Console.WriteLine("　　→{0}   {1}年発行", books.Title, books.PublishedYear);
                     }
