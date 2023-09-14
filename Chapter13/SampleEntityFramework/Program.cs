@@ -11,7 +11,7 @@ namespace SampleEntityFramework {
     class Program {
         static void Main(string[] args) {
             Console.WriteLine("# 1.1");
-            //Exercise1_1();
+            //Exercise1_1();    //既に実行済み
 
             Console.WriteLine();
             Console.WriteLine("# 1.2");
