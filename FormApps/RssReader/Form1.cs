@@ -12,34 +12,57 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form1 : Form {
+        IEnumerable<ItemData> nodes;
+        Dictionary<string, string> categoryDic = new Dictionary<string, string>();
         public Form1() {
             InitializeComponent();
-            cbAdd();
+            Category();
         }
-        IEnumerable<ItemData> nodes;
         private void btGet_Click(object sender, EventArgs e) {
+            //記事一覧をリセット
+            lbRssTitle.Items.Clear();
             //試験用url
             //https://news.yahoo.co.jp/rss/categories/it.xml
 
+            //コンボボックスへ入力されているのがカテゴリ名かを判定
+            var Link = "";
+            foreach (var item in categoryDic.Where(x => x.Key.Equals(cbLink.Text))) {
+                Link = categoryDic[item.Key];
+            }
+            if (Link.Equals("")) {
+                Link = cbLink.Text;
+            }
+
+            //urlを取得し情報をクラスに格納
             using (var wc = new WebClient()) {
-                var url = wc.OpenRead(tbUrl.Text);
-                XDocument xdoc = XDocument.Load(url);
+                try {
+                    var url = wc.OpenRead(Link);
+                    XDocument xdoc = XDocument.Load(url);
 
-                nodes = xdoc.Root.Descendants("item").Select(x => new ItemData { Title = x.Element("title").Value, Link = x.Element("link").Value, });
+                    nodes = xdoc.Root.Descendants("item").Select(x => new ItemData { Title = x.Element("title").Value, Link = x.Element("link").Value, });
 
-                foreach (var node in nodes) {
-                    lbRssTitle.Items.Add(node.Title);
+                    foreach (var node in nodes) {
+                        lbRssTitle.Items.Add(node.Title);
+                    }
                 }
-                //this.wbBrowser.Navigate(useUrl);
+                catch (Exception) {
+                    MessageBox.Show("***URLが取得できません***");
+                }
+
             }
         }
 
-        private void cbAdd() {
-            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/it.xml");
-            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/sports.xml");
-            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/world.xml");
+        //コンボボックスへのカテゴリーの追加
+        private void Category() {
+            categoryDic.Add("IT", "https://news.yahoo.co.jp/rss/categories/it.xml");
+            categoryDic.Add("スポーツ", "https://news.yahoo.co.jp/rss/categories/sports.xml");
+            categoryDic.Add("国際", "https://news.yahoo.co.jp/rss/categories/world.xml");
+            foreach (var categoryName in categoryDic.Keys) {
+                cbLink.Items.Add(categoryName);
+            }
         }
 
+        //記事が選択された時の処理
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
             foreach (var title in nodes.Select(x => x.Title)) {
                 foreach (var link in nodes.Where(x => x.Title.Equals(lbRssTitle.SelectedItem))) {
@@ -47,6 +70,9 @@ namespace RssReader {
                 }   
             }
         }
-
+        //-500
+        private void Form1_SizeChanged(object sender, EventArgs e) {
+            wbBrowser.Size = new Size(Size.Width-500,Size.Height-96);
+        }
     }
 }
