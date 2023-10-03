@@ -14,6 +14,7 @@ namespace RssReader {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
+            cbAdd();
         }
         IEnumerable<ItemData> nodes;
         private void btGet_Click(object sender, EventArgs e) {
@@ -33,9 +34,17 @@ namespace RssReader {
             }
         }
 
+        private void cbAdd() {
+            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/it.xml");
+            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/sports.xml");
+            cbLink.Items.Add("https://news.yahoo.co.jp/rss/categories/world.xml");
+        }
+
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
-            foreach (var link in nodes) {
+            foreach (var title in nodes.Select(x => x.Title)) {
+                foreach (var link in nodes.Where(x => x.Title.Equals(lbRssTitle.SelectedItem))) {
                     this.wbBrowser.Navigate(link.Link);
+                }   
             }
         }
 
