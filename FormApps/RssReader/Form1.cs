@@ -72,7 +72,8 @@ namespace RssReader {
         }
         //-500
         private void Form1_SizeChanged(object sender, EventArgs e) {
-            wbBrowser.Size = new Size(Size.Width-500,Size.Height-96);
+            //wbBrowser.Size = new Size(Size.Width - 515, Size.Height - 96);
+            //lbRssTitle.Size = new Size(Size.Width - 755, Size.Height - 96);
         }
     }
 }
