@@ -14,10 +14,9 @@ namespace Exercise02 {
 
         private static void Pickup3DigitNumber(string file) {
             foreach (var line in File.ReadLines(file)) {
-                var regex = new Regex(@"^\d{3}\d*$");
-                foreach (var words in line.Split(new char[] { ' ', }, StringSplitOptions.RemoveEmptyEntries)) {
-                    if (regex.IsMatch(words))
-                        Console.WriteLine(words);
+                var matches = Regex.Matches(line, @"\b\d{3,}\b");
+                foreach (Match m in matches) {
+                    Console.WriteLine(m.Value);
                 }
             }
         }
