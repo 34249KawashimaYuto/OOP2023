@@ -12,6 +12,7 @@ namespace Exercise06 {
             
             var pattern = @"\b(\w)(\w)\w\2\1\b"; //←ここにパターンを記述
             var matches = Regex.Matches(text, pattern);
+
             foreach (Match m in matches)
                 Console.WriteLine("'{0}'", m.Value);
         }
