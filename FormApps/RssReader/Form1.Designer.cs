@@ -70,6 +70,7 @@ namespace RssReader {
             this.cbLink.Size = new System.Drawing.Size(767, 27);
             this.cbLink.TabIndex = 4;
             this.cbLink.Text = "カテゴリを選択するかURLを記述してください";
+            this.cbLink.SelectionChangeCommitted += new System.EventHandler(this.cbLink_SelectedValueChanged);
             // 
             // Form1
             // 
