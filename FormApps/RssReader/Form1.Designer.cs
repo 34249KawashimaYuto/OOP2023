@@ -58,7 +58,7 @@ namespace RssReader {
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(675, 652);
+            this.wbBrowser.Size = new System.Drawing.Size(680, 652);
             this.wbBrowser.TabIndex = 3;
             // 
             // cbLink
@@ -70,7 +70,7 @@ namespace RssReader {
             this.cbLink.Size = new System.Drawing.Size(767, 27);
             this.cbLink.TabIndex = 4;
             this.cbLink.Text = "カテゴリを選択するかURLを記述してください";
-            this.cbLink.SelectionChangeCommitted += new System.EventHandler(this.cbLink_SelectedValueChanged);
+            this.cbLink.SelectedIndexChanged += new System.EventHandler(this.cbLink_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -83,7 +83,6 @@ namespace RssReader {
             this.Controls.Add(this.btGet);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.ResumeLayout(false);
 
         }

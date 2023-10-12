@@ -48,7 +48,7 @@ namespace RssReader {
                 catch (Exception) {
                     MessageBox.Show("***URLが取得できません***");
                 }
-
+                cbLink.Text = "aaa";
             }
         }
 
@@ -70,16 +70,9 @@ namespace RssReader {
                 }   
             }
         }
-        
-        private void Form1_SizeChanged(object sender, EventArgs e) {
-            //wbBrowser.Size = new Size(Size.Width - 515, Size.Height - 96);
-            //lbRssTitle.Size = new Size(Size.Width - 755, Size.Height - 96);
-        }
 
-        private void cbLink_SelectedValueChanged(object sender, EventArgs e) {
-            string t = cbLink.Text;
-            cbLink.Text = categoryDic[t];
-            
+        private void cbLink_SelectedIndexChanged(object sender, EventArgs e) {
+            cbLink.Text = "www";
         }
     }
 }
