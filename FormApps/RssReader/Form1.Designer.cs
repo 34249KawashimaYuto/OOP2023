@@ -27,7 +27,12 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
-            this.cbLink = new System.Windows.Forms.ComboBox();
+            this.rbIT = new System.Windows.Forms.RadioButton();
+            this.rbSports = new System.Windows.Forms.RadioButton();
+            this.rbInternational = new System.Windows.Forms.RadioButton();
+            this.gbCategory = new System.Windows.Forms.GroupBox();
+            this.tbLink = new System.Windows.Forms.TextBox();
+            this.gbCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // btGet
@@ -45,9 +50,9 @@ namespace RssReader {
             this.lbRssTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(31, 49);
+            this.lbRssTitle.Location = new System.Drawing.Point(31, 97);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(435, 652);
+            this.lbRssTitle.Size = new System.Drawing.Size(435, 604);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
@@ -61,29 +66,75 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(680, 652);
             this.wbBrowser.TabIndex = 3;
             // 
-            // cbLink
+            // rbIT
             // 
-            this.cbLink.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cbLink.FormattingEnabled = true;
-            this.cbLink.Location = new System.Drawing.Point(31, 14);
-            this.cbLink.Name = "cbLink";
-            this.cbLink.Size = new System.Drawing.Size(767, 27);
-            this.cbLink.TabIndex = 4;
-            this.cbLink.Text = "カテゴリを選択するかURLを記述してください";
-            this.cbLink.SelectedIndexChanged += new System.EventHandler(this.cbLink_SelectedIndexChanged);
+            this.rbIT.AutoSize = true;
+            this.rbIT.Location = new System.Drawing.Point(6, 14);
+            this.rbIT.Name = "rbIT";
+            this.rbIT.Size = new System.Drawing.Size(33, 16);
+            this.rbIT.TabIndex = 5;
+            this.rbIT.TabStop = true;
+            this.rbIT.Text = "IT";
+            this.rbIT.UseVisualStyleBackColor = true;
+            // 
+            // rbSports
+            // 
+            this.rbSports.AutoSize = true;
+            this.rbSports.Location = new System.Drawing.Point(60, 14);
+            this.rbSports.Name = "rbSports";
+            this.rbSports.Size = new System.Drawing.Size(61, 16);
+            this.rbSports.TabIndex = 6;
+            this.rbSports.TabStop = true;
+            this.rbSports.Text = "スポーツ";
+            this.rbSports.UseVisualStyleBackColor = true;
+            // 
+            // rbInternational
+            // 
+            this.rbInternational.AutoSize = true;
+            this.rbInternational.Location = new System.Drawing.Point(127, 14);
+            this.rbInternational.Name = "rbInternational";
+            this.rbInternational.Size = new System.Drawing.Size(47, 16);
+            this.rbInternational.TabIndex = 7;
+            this.rbInternational.TabStop = true;
+            this.rbInternational.Text = "国際";
+            this.rbInternational.UseVisualStyleBackColor = true;
+            // 
+            // gbCategory
+            // 
+            this.gbCategory.Controls.Add(this.rbIT);
+            this.gbCategory.Controls.Add(this.rbInternational);
+            this.gbCategory.Controls.Add(this.rbSports);
+            this.gbCategory.Location = new System.Drawing.Point(31, 47);
+            this.gbCategory.Name = "gbCategory";
+            this.gbCategory.Size = new System.Drawing.Size(435, 41);
+            this.gbCategory.TabIndex = 8;
+            this.gbCategory.TabStop = false;
+            this.gbCategory.Text = "groupBox1";
+            // 
+            // tbLink
+            // 
+            this.tbLink.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbLink.Location = new System.Drawing.Point(31, 13);
+            this.tbLink.Name = "tbLink";
+            this.tbLink.Size = new System.Drawing.Size(767, 28);
+            this.tbLink.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 709);
-            this.Controls.Add(this.cbLink);
+            this.Controls.Add(this.tbLink);
+            this.Controls.Add(this.gbCategory);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.gbCategory.ResumeLayout(false);
+            this.gbCategory.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -91,7 +142,11 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
-        private System.Windows.Forms.ComboBox cbLink;
+        private System.Windows.Forms.RadioButton rbIT;
+        private System.Windows.Forms.RadioButton rbSports;
+        private System.Windows.Forms.RadioButton rbInternational;
+        private System.Windows.Forms.GroupBox gbCategory;
+        private System.Windows.Forms.TextBox tbLink;
     }
 }
 

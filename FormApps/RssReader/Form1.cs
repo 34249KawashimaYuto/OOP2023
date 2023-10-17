@@ -24,19 +24,10 @@ namespace RssReader {
             //試験用url
             //https://news.yahoo.co.jp/rss/categories/it.xml
 
-            //コンボボックスへ入力されているのがカテゴリ名かを判定
-            var Link = "";
-            foreach (var item in categoryDic.Where(x => x.Key.Equals(cbLink.Text))) {
-                Link = categoryDic[item.Key];
-            }
-            if (Link.Equals("")) {
-                Link = cbLink.Text;
-            }
-
             //urlを取得し情報をクラスに格納
             using (var wc = new WebClient()) {
                 try {
-                    var url = wc.OpenRead(Link);
+                    var url = wc.OpenRead(tbLink.Text);
                     XDocument xdoc = XDocument.Load(url);
 
                     nodes = xdoc.Root.Descendants("item").Select(x => new ItemData { Title = x.Element("title").Value, Link = x.Element("link").Value, });
@@ -48,18 +39,14 @@ namespace RssReader {
                 catch (Exception) {
                     MessageBox.Show("***URLが取得できません***");
                 }
-                cbLink.Text = "aaa";
             }
         }
 
-        //コンボボックスへのカテゴリーの追加
+        //dictionaryへのカテゴリーの追加
         private void Category() {
             categoryDic.Add("IT", "https://news.yahoo.co.jp/rss/categories/it.xml");
             categoryDic.Add("スポーツ", "https://news.yahoo.co.jp/rss/categories/sports.xml");
             categoryDic.Add("国際", "https://news.yahoo.co.jp/rss/categories/world.xml");
-            foreach (var categoryName in categoryDic.Keys) {
-                cbLink.Items.Add(categoryName);
-            }
         }
 
         //記事が選択された時の処理
@@ -69,10 +56,6 @@ namespace RssReader {
                     this.wbBrowser.Navigate(link.Link);
                 }   
             }
-        }
-
-        private void cbLink_SelectedIndexChanged(object sender, EventArgs e) {
-            cbLink.Text = "www";
         }
     }
 }
