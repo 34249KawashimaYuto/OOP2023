@@ -9,7 +9,7 @@ namespace Exercise02.ConcreteConverter {
         public override bool IsMyUnit(string name) {
             return name.ToLower() == "kilometre" || name == UnitName;
         }
-        protected override double Ratio { get { return 0.001; } }
+        protected override double Ratio { get { return 1000; } }
         public override string UnitName { get { return "キロメートル"; } }
     }
 }
