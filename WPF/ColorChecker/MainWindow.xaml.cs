@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,12 +19,84 @@ namespace ColorChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        MyColor myColor;
         public MainWindow() {
             InitializeComponent();
+            DataContext = GetColorList();
         }
 
+        //スライダの値が変わった際のイベントハンドラ
         private void slider_Chenged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            colorArea.Background = new SolidColorBrush(Color.FromRgb((byte)int.Parse(rValue.Text), (byte)int.Parse(gValue.Text), (byte)int.Parse(bValue.Text)));
+            Color color =  getColor(int.Parse(rValue.Text), int.Parse(gValue.Text), int.Parse(bValue.Text));
+            colorArea.Background = new SolidColorBrush(color);
         }
+
+        //STOCKボタンが押された際のイベントハンドラ
+        private void stockButton_Click(object sender, RoutedEventArgs e) {
+            Color getColor = this.getColor(int.Parse(rValue.Text), int.Parse(gValue.Text), int.Parse(bValue.Text));
+            string cName = string.Format("R:{0} G:{1} B:{2}",getColor.R,getColor.G,getColor.B);
+            foreach (var col in GetColorList()) {
+                if (getColor == col.Color)
+                    cName = col.Name;
+            }
+            myColor = new MyColor()
+            {
+                Color = getColor,
+                Name = cName
+            };
+            stockList.Items.Add(myColor.Name);
+        }
+
+        //Listが選択された際のイベントハンドラ
+        private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            string value = stockList.SelectedItem.ToString();
+            bool sw = false;
+            foreach (var col in GetColorList()) {
+                if (value.Equals(col.Name)) {
+                    colorArea.Background = new SolidColorBrush(col.Color);
+                    rValue.Text = col.Color.R.ToString();
+                    gValue.Text = col.Color.G.ToString();
+                    bValue.Text = col.Color.B.ToString();
+                    sw = true;
+                }
+            }
+            if(sw == false) {
+                var results = System.Text.RegularExpressions.Regex.Matches(value, @"[0-9]+\.?[0-9]*");
+                var nums = new List<int>();
+                foreach (var item in results) {
+                    string strNum = item.ToString();
+                    nums.Add(int.Parse(strNum));
+                }
+                colorArea.Background = new SolidColorBrush(getColor(nums[0], nums[1], nums[2]));
+                rValue.Text = nums[0].ToString();
+                gValue.Text = nums[1].ToString();
+                bValue.Text = nums[2].ToString();
+            }
+
+        }
+
+        //RGB値から色を生成するメソッド
+        private Color getColor(int v1, int v2, int v3) {
+            return Color.FromRgb((byte)v1, (byte)v2, (byte)v3);
+        }
+
+        //すべての色を取得するメソッド
+        private MyColor[] GetColorList() {
+            return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var color = ((MyColor)((ComboBox)sender).SelectedItem).Color;
+            rValue.Text = color.R.ToString();
+            gValue.Text = color.G.ToString();
+            bValue.Text = color.B.ToString();
+            colorArea.Background = new SolidColorBrush(color);
+        }
+    }
+
+    public class MyColor {
+        public Color Color { get; set; }
+        public string Name { get; set; }
     }
 }
