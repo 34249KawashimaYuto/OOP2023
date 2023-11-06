@@ -57,5 +57,23 @@ namespace RssReader {
                 }   
             }
         }
+
+        //ラジオボタンが選択された時の処理
+        private void category_Select(object sender, EventArgs e) {
+            var Checked_InGroup = gbCategory.Controls.OfType<RadioButton>().SingleOrDefault(rb => rb.Checked == true);
+            tbLink.Text = categoryDic[Checked_InGroup.Text];
+        }
+
+        private void btFavorite_Click(object sender, EventArgs e) {
+            string fTitle = tbFavorite.Text;
+            categoryDic.Add(fTitle, tbLink.Text);
+            cbFavorite.Items.Add(fTitle);
+            tbFavorite.Clear();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            tbLink.Text = categoryDic[cbFavorite.SelectedItem.ToString()];
+
+        }
     }
 }
