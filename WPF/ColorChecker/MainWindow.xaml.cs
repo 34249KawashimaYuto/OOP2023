@@ -62,15 +62,14 @@ namespace ColorChecker {
             }
             if(sw == false) {
                 var results = System.Text.RegularExpressions.Regex.Matches(value, @"[0-9]+\.?[0-9]*");
-                var nums = new List<int>();
+                var nums = new List<string>();
                 foreach (var item in results) {
-                    string strNum = item.ToString();
-                    nums.Add(int.Parse(strNum));
+                    nums.Add(item.ToString());
                 }
-                colorArea.Background = new SolidColorBrush(getColor(nums[0], nums[1], nums[2]));
-                rValue.Text = nums[0].ToString();
-                gValue.Text = nums[1].ToString();
-                bValue.Text = nums[2].ToString();
+                colorArea.Background = new SolidColorBrush(getColor(int.Parse(nums[0]), int.Parse(nums[1]), int.Parse(nums[2])));
+                rValue.Text = nums[0];
+                gValue.Text = nums[1];
+                bValue.Text = nums[2];
             }
 
         }
