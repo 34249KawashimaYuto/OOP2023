@@ -51,13 +51,14 @@ namespace ColorChecker {
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             string value = stockList.SelectedItem.ToString();
             bool sw = false;
+            Color color = Color.FromRgb(0,0,0);
             foreach (var col in GetColorList()) {
                 if (value.Equals(col.Name)) {
-                    colorArea.Background = new SolidColorBrush(col.Color);
                     rValue.Text = col.Color.R.ToString();
                     gValue.Text = col.Color.G.ToString();
                     bValue.Text = col.Color.B.ToString();
                     sw = true;
+                    color = col.Color;
                 }
             }
             if(sw == false) {
@@ -66,11 +67,12 @@ namespace ColorChecker {
                 foreach (var item in results) {
                     nums.Add(item.ToString());
                 }
-                colorArea.Background = new SolidColorBrush(getColor(int.Parse(nums[0]), int.Parse(nums[1]), int.Parse(nums[2])));
                 rValue.Text = nums[0];
                 gValue.Text = nums[1];
                 bValue.Text = nums[2];
+                color = getColor(int.Parse(nums[0]), int.Parse(nums[1]), int.Parse(nums[2]));
             }
+            colorArea.Background = new SolidColorBrush(color);
 
         }
 
