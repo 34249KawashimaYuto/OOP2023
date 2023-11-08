@@ -9,6 +9,7 @@ namespace SampleUnitConverter {
     public class MainWindowViewModel : ViewModel{
         private double metricValue, imperialValue;
 
+        //プロパティ
         public double MetricValue {
             get { return this.metricValue; }
             set {
@@ -39,7 +40,9 @@ namespace SampleUnitConverter {
         public MainWindowViewModel() {
             this.CurrentMetricUnit = MetricUnit.Units.First();
             this.CurrentImperialUnit = ImperialUnit.Units.First();
+
             this.MetricToImperialUnit = new DelegateCommand(() => this.ImperialValue = this.CurrentImperialUnit.FromMetricUnit(this.CurrentMetricUnit, this.MetricValue));
+            
             this.ImperialUnitToMetric = new DelegateCommand(() => this.MetricValue = this.CurrentMetricUnit.FromImperialUnit(this.CurrentImperialUnit, this.ImperialValue));
         }
     }
