@@ -67,16 +67,22 @@ namespace RssReader {
 
         //お気に入り登録ボタンを押したときの処理
         private void btFavorite_Click(object sender, EventArgs e) {
-            string fTitle = tbFavorite.Text;
-            categoryDic.Add(fTitle, tbLink.Text);
-            cbFavorite.Items.Add(fTitle);
-            tbFavorite.Clear();
+            try {
+                string fTitle = tbFavorite.Text;
+                categoryDic.Add(fTitle, tbLink.Text);
+                cbFavorite.Items.Add(fTitle);
+                tbFavorite.Clear();
+            }
+            catch {
+                if (tbFavorite.Text.Equals(null)) {
+                    MessageBox.Show("名前が入力されていません");
+                }
+            }
         }
 
         //お気に入り一覧を表示するコンボボックス選択時の処理
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             tbLink.Text = categoryDic[cbFavorite.SelectedItem.ToString()];
-
         }
     }
 }

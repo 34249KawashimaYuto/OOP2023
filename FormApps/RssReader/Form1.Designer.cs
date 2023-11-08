@@ -24,6 +24,7 @@ namespace RssReader {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
@@ -37,6 +38,7 @@ namespace RssReader {
             this.btFavorite = new System.Windows.Forms.Button();
             this.cbFavorite = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.gbCategory.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +150,7 @@ namespace RssReader {
             this.tbFavorite.Name = "tbFavorite";
             this.tbFavorite.Size = new System.Drawing.Size(215, 27);
             this.tbFavorite.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.tbFavorite, "お気に入りのURLにつける名前を入力");
             // 
             // btFavorite
             // 
@@ -157,6 +160,7 @@ namespace RssReader {
             this.btFavorite.Size = new System.Drawing.Size(34, 28);
             this.btFavorite.TabIndex = 11;
             this.btFavorite.Text = "☆";
+            this.toolTip1.SetToolTip(this.btFavorite, "このURLをお気に入りとして追加する");
             this.btFavorite.UseVisualStyleBackColor = true;
             this.btFavorite.Click += new System.EventHandler(this.btFavorite_Click);
             // 
@@ -219,6 +223,7 @@ namespace RssReader {
         private System.Windows.Forms.ComboBox cbFavorite;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbScience;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
