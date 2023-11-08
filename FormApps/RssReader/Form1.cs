@@ -37,7 +37,7 @@ namespace RssReader {
                     }
                 }
                 catch (Exception) {
-                    MessageBox.Show("***URLが取得できません***");
+                    MessageBox.Show("***URLが正しくありません***");
                 }
             }
         }
@@ -47,6 +47,7 @@ namespace RssReader {
             categoryDic.Add("IT", "https://news.yahoo.co.jp/rss/categories/it.xml");
             categoryDic.Add("スポーツ", "https://news.yahoo.co.jp/rss/categories/sports.xml");
             categoryDic.Add("国際", "https://news.yahoo.co.jp/rss/categories/world.xml");
+            categoryDic.Add("科学", "https://news.yahoo.co.jp/rss/categories/science.xml");
         }
 
         //記事が選択された時の処理
@@ -64,6 +65,7 @@ namespace RssReader {
             tbLink.Text = categoryDic[Checked_InGroup.Text];
         }
 
+        //お気に入り登録ボタンを押したときの処理
         private void btFavorite_Click(object sender, EventArgs e) {
             string fTitle = tbFavorite.Text;
             categoryDic.Add(fTitle, tbLink.Text);
@@ -71,6 +73,7 @@ namespace RssReader {
             tbFavorite.Clear();
         }
 
+        //お気に入り一覧を表示するコンボボックス選択時の処理
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             tbLink.Text = categoryDic[cbFavorite.SelectedItem.ToString()];
 
