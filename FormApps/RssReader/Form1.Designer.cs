@@ -39,6 +39,9 @@ namespace RssReader {
             this.cbFavorite = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbHistory = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbCategory.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -163,6 +166,8 @@ namespace RssReader {
             this.toolTip1.SetToolTip(this.btFavorite, "このURLをお気に入りとして追加する");
             this.btFavorite.UseVisualStyleBackColor = true;
             this.btFavorite.Click += new System.EventHandler(this.btFavorite_Click);
+            this.btFavorite.MouseLeave += new System.EventHandler(this.btFavorite_MouseLeave);
+            this.btFavorite.MouseHover += new System.EventHandler(this.btFavorite_MouseHover);
             // 
             // cbFavorite
             // 
@@ -173,6 +178,7 @@ namespace RssReader {
             this.cbFavorite.Name = "cbFavorite";
             this.cbFavorite.Size = new System.Drawing.Size(255, 24);
             this.cbFavorite.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.cbFavorite, "お気に入り一覧を表示");
             this.cbFavorite.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox1
@@ -187,11 +193,42 @@ namespace RssReader {
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "お気に入り登録";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(473, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "履歴";
+            // 
+            // cbHistory
+            // 
+            this.cbHistory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHistory.FormattingEnabled = true;
+            this.cbHistory.Location = new System.Drawing.Point(511, 66);
+            this.cbHistory.Name = "cbHistory";
+            this.cbHistory.Size = new System.Drawing.Size(368, 20);
+            this.cbHistory.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.cbHistory, "履歴一覧を表示します");
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(473, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "前回：";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 709);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbHistory);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbLink);
             this.Controls.Add(this.gbCategory);
@@ -224,6 +261,9 @@ namespace RssReader {
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbScience;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbHistory;
+        private System.Windows.Forms.Label label2;
     }
 }
 

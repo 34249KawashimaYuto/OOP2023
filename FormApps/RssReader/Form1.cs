@@ -19,6 +19,9 @@ namespace RssReader {
             Category();
         }
         private void btGet_Click(object sender, EventArgs e) {
+            //履歴に追加
+            cbHistory.Items.Add(tbLink.Text);
+            cbHistory.Text = tbLink.Text;
             //記事一覧をリセット
             lbRssTitle.Items.Clear();
             //試験用url
@@ -48,6 +51,8 @@ namespace RssReader {
             categoryDic.Add("スポーツ", "https://news.yahoo.co.jp/rss/categories/sports.xml");
             categoryDic.Add("国際", "https://news.yahoo.co.jp/rss/categories/world.xml");
             categoryDic.Add("科学", "https://news.yahoo.co.jp/rss/categories/science.xml");
+            categoryDic.Add("経済", "https://news.yahoo.co.jp/rss/categories/business.xml");
+            categoryDic.Add("国内", "https://news.yahoo.co.jp/rss/categories/domestic.xml");
         }
 
         //記事が選択された時の処理
@@ -72,6 +77,7 @@ namespace RssReader {
                 categoryDic.Add(fTitle, tbLink.Text);
                 cbFavorite.Items.Add(fTitle);
                 tbFavorite.Clear();
+                cbFavorite.Text = fTitle;
             }
             catch {
                 if (tbFavorite.Text.Equals(null)) {
@@ -83,6 +89,22 @@ namespace RssReader {
         //お気に入り一覧を表示するコンボボックス選択時の処理
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             tbLink.Text = categoryDic[cbFavorite.SelectedItem.ToString()];
+        }
+
+        //カーソルがボタンの上から離れた時のイベント
+        private void btFavorite_MouseLeave(object sender, EventArgs e) {
+            btFavorite.Text = Button_TextChange(0);
+        }
+        //カーソルがボタンの上に来た時のイベント
+        private void btFavorite_MouseHover(object sender, EventArgs e) {
+            btFavorite.Text = Button_TextChange(1);
+        }
+        //星印を反転させるメソッド
+        private string Button_TextChange(int n) {
+            switch (n) {
+                case 1:return "★";
+                default:return "☆";
+            }
         }
     }
 }
