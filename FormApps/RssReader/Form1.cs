@@ -91,6 +91,7 @@ namespace RssReader {
         //お気に入り一覧を表示するコンボボックス選択時の処理
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             tbLink.Text = categoryDic[cbFavorite.SelectedItem.ToString()];
+            //btGet_Click(sender, e);
         }
 
         //カーソルがボタンの上から離れた時のイベント
