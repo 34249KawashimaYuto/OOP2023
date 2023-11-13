@@ -53,6 +53,8 @@ namespace RssReader {
             categoryDic.Add("科学", "https://news.yahoo.co.jp/rss/categories/science.xml");
             categoryDic.Add("経済", "https://news.yahoo.co.jp/rss/categories/business.xml");
             categoryDic.Add("国内", "https://news.yahoo.co.jp/rss/categories/domestic.xml");
+            categoryDic.Add("エンタメ", "https://news.yahoo.co.jp/rss/categories/entertainment.xml");
+            categoryDic.Add("ライフ", "https://news.yahoo.co.jp/rss/categories/life.xml");
         }
 
         //記事が選択された時の処理
