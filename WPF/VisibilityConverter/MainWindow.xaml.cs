@@ -25,5 +25,9 @@ namespace VisibilityConverter {
         private void Button_Click(object sender, RoutedEventArgs e) {
             Resources["ButtonBrushKey"] = new SolidColorBrush(Colors.Gray);
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            ComboBox.SelectedItem = 0;
+        }
     }
 }
