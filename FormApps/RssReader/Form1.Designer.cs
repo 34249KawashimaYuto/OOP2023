@@ -32,6 +32,10 @@ namespace RssReader {
             this.rbSports = new System.Windows.Forms.RadioButton();
             this.rbInternational = new System.Windows.Forms.RadioButton();
             this.gbCategory = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.rbScience = new System.Windows.Forms.RadioButton();
             this.tbLink = new System.Windows.Forms.TextBox();
             this.tbFavorite = new System.Windows.Forms.TextBox();
@@ -42,10 +46,6 @@ namespace RssReader {
             this.cbHistory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.gbCategory.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,28 +63,29 @@ namespace RssReader {
             // lbRssTitle
             // 
             this.lbRssTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbRssTitle.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
-            this.lbRssTitle.ItemHeight = 12;
+            this.lbRssTitle.ItemHeight = 16;
             this.lbRssTitle.Location = new System.Drawing.Point(31, 97);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(435, 604);
+            this.lbRssTitle.Size = new System.Drawing.Size(1121, 132);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
             // wbBrowser
             // 
             this.wbBrowser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.wbBrowser.Location = new System.Drawing.Point(472, 97);
+            this.wbBrowser.Location = new System.Drawing.Point(31, 242);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(680, 604);
+            this.wbBrowser.Size = new System.Drawing.Size(1121, 436);
             this.wbBrowser.TabIndex = 3;
             // 
             // rbIT
             // 
             this.rbIT.AutoSize = true;
-            this.rbIT.Location = new System.Drawing.Point(6, 19);
+            this.rbIT.Location = new System.Drawing.Point(6, 18);
             this.rbIT.Name = "rbIT";
             this.rbIT.Size = new System.Drawing.Size(33, 16);
             this.rbIT.TabIndex = 5;
@@ -108,7 +109,7 @@ namespace RssReader {
             // rbInternational
             // 
             this.rbInternational.AutoSize = true;
-            this.rbInternational.Location = new System.Drawing.Point(112, 18);
+            this.rbInternational.Location = new System.Drawing.Point(335, 18);
             this.rbInternational.Name = "rbInternational";
             this.rbInternational.Size = new System.Drawing.Size(47, 16);
             this.rbInternational.TabIndex = 7;
@@ -125,8 +126,8 @@ namespace RssReader {
             this.gbCategory.Controls.Add(this.radioButton1);
             this.gbCategory.Controls.Add(this.rbScience);
             this.gbCategory.Controls.Add(this.rbIT);
-            this.gbCategory.Controls.Add(this.rbInternational);
             this.gbCategory.Controls.Add(this.rbSports);
+            this.gbCategory.Controls.Add(this.rbInternational);
             this.gbCategory.Location = new System.Drawing.Point(31, 47);
             this.gbCategory.Name = "gbCategory";
             this.gbCategory.Size = new System.Drawing.Size(445, 41);
@@ -134,10 +135,58 @@ namespace RssReader {
             this.gbCategory.TabStop = false;
             this.gbCategory.Text = "カテゴリー";
             // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(228, 18);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(48, 16);
+            this.radioButton4.TabIndex = 12;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "ライフ";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.category_Select);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(165, 18);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(57, 16);
+            this.radioButton3.TabIndex = 11;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "エンタメ";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.category_Select);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(282, 18);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 16);
+            this.radioButton2.TabIndex = 10;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "国内";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.category_Select);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(112, 18);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 16);
+            this.radioButton1.TabIndex = 9;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "経済";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.category_Select);
+            // 
             // rbScience
             // 
             this.rbScience.AutoSize = true;
-            this.rbScience.Location = new System.Drawing.Point(165, 18);
+            this.rbScience.Location = new System.Drawing.Point(388, 18);
             this.rbScience.Name = "rbScience";
             this.rbScience.Size = new System.Drawing.Size(47, 16);
             this.rbScience.TabIndex = 8;
@@ -229,59 +278,11 @@ namespace RssReader {
             this.label2.TabIndex = 16;
             this.label2.Text = "前回：";
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(218, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 9;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "経済";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.category_Select);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(271, 18);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 10;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "国内";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.category_Select);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(325, 18);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(57, 16);
-            this.radioButton3.TabIndex = 11;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "エンタメ";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.category_Select);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(387, 18);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(48, 16);
-            this.radioButton4.TabIndex = 12;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "ライフ";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.category_Select);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 709);
+            this.ClientSize = new System.Drawing.Size(1174, 690);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbHistory);
             this.Controls.Add(this.label1);
@@ -291,6 +292,7 @@ namespace RssReader {
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.gbCategory.ResumeLayout(false);
