@@ -17,6 +17,8 @@ namespace RssReader {
         public Form1() {
             InitializeComponent();
             Category();
+            btGet.Enabled = (tbLink.Text.Equals("")) ? false : true;
+            btFavorite.Enabled = (tbFavorite.Text.Equals("") || tbLink.Text.Equals("")) ? false : true;
         }
         private void btGet_Click(object sender, EventArgs e) {
             //履歴に追加
@@ -96,18 +98,18 @@ namespace RssReader {
 
         //カーソルがボタンの上から離れた時のイベント
         private void btFavorite_MouseLeave(object sender, EventArgs e) {
-            btFavorite.Text = Button_TextChange(0);
+            btFavorite.Text = "☆";
         }
         //カーソルがボタンの上に来た時のイベント
         private void btFavorite_MouseHover(object sender, EventArgs e) {
-            btFavorite.Text = Button_TextChange(1);
+            btFavorite.Text = "★";
         }
         //星印を反転させるメソッド
-        private string Button_TextChange(int n) {
-            switch (n) {
-                case 1:return "★";
-                default:return "☆";
-            }
+        //private string Button_TextChange(bool b) => b ? "★" : "☆";
+
+        private void TextChange(object sender,EventArgs e) {
+            btGet.Enabled = (tbLink.Text.Equals("")) ? false : true;
+            btFavorite.Enabled = (tbFavorite.Text.Equals("") || tbLink.Text.Equals("")) ? false : true;
         }
     }
 }

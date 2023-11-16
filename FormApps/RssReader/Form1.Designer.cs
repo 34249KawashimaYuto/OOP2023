@@ -79,7 +79,7 @@ namespace RssReader {
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(1121, 436);
+            this.wbBrowser.Size = new System.Drawing.Size(1121, 425);
             this.wbBrowser.TabIndex = 3;
             // 
             // rbIT
@@ -202,26 +202,29 @@ namespace RssReader {
             this.tbLink.Name = "tbLink";
             this.tbLink.Size = new System.Drawing.Size(767, 28);
             this.tbLink.TabIndex = 9;
+            this.tbLink.TextChanged += new System.EventHandler(this.TextChange);
             // 
             // tbFavorite
             // 
             this.tbFavorite.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbFavorite.Location = new System.Drawing.Point(6, 18);
+            this.tbFavorite.Location = new System.Drawing.Point(6, 15);
             this.tbFavorite.Name = "tbFavorite";
-            this.tbFavorite.Size = new System.Drawing.Size(215, 27);
+            this.tbFavorite.Size = new System.Drawing.Size(222, 27);
             this.tbFavorite.TabIndex = 10;
             this.toolTip1.SetToolTip(this.tbFavorite, "お気に入りのURLにつける名前を入力");
+            this.tbFavorite.TextChanged += new System.EventHandler(this.TextChange);
             // 
             // btFavorite
             // 
+            this.btFavorite.BackColor = System.Drawing.Color.Transparent;
             this.btFavorite.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btFavorite.Location = new System.Drawing.Point(227, 18);
+            this.btFavorite.Location = new System.Drawing.Point(234, 13);
             this.btFavorite.Name = "btFavorite";
-            this.btFavorite.Size = new System.Drawing.Size(34, 28);
+            this.btFavorite.Size = new System.Drawing.Size(27, 30);
             this.btFavorite.TabIndex = 11;
             this.btFavorite.Text = "☆";
             this.toolTip1.SetToolTip(this.btFavorite, "このURLをお気に入りとして追加する");
-            this.btFavorite.UseVisualStyleBackColor = true;
+            this.btFavorite.UseVisualStyleBackColor = false;
             this.btFavorite.Click += new System.EventHandler(this.btFavorite_Click);
             this.btFavorite.MouseLeave += new System.EventHandler(this.btFavorite_MouseLeave);
             this.btFavorite.MouseHover += new System.EventHandler(this.btFavorite_MouseHover);
@@ -240,9 +243,9 @@ namespace RssReader {
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btFavorite);
             this.groupBox1.Controls.Add(this.tbFavorite);
             this.groupBox1.Controls.Add(this.cbFavorite);
-            this.groupBox1.Controls.Add(this.btFavorite);
             this.groupBox1.Location = new System.Drawing.Point(885, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(267, 78);
@@ -293,6 +296,7 @@ namespace RssReader {
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.gbCategory.ResumeLayout(false);
