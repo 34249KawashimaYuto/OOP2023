@@ -27,7 +27,13 @@ namespace ColorChecker {
 
         //スライダの値が変わった際のイベントハンドラ
         private void slider_Chenged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            Color color =  getColor(int.Parse(rValue.Text), int.Parse(gValue.Text), int.Parse(bValue.Text));
+            int r = (int)rSlider.Value;
+            rValue.Text = r.ToString();
+            int g = (int)gSlider.Value;
+            gValue.Text = g.ToString();
+            int b = (int)bSlider.Value;
+            bValue.Text = b.ToString();
+            Color color =  getColor(r, g, b);
             colorArea.Background = new SolidColorBrush(color);
         }
 

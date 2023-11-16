@@ -26,15 +26,15 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Text="R" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Maximum="255" IsSnapToTickEnabled="True" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50"/>
+            <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Maximum="255" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50" SmallChange="1"/>
             <TextBox x:Name="rValue" Grid.Column="2" Grid.Row="0" Height="20" Margin="5,0" Text="{Binding ElementName=rSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock Grid.Row="1" Text="G" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Maximum="255" IsSnapToTickEnabled="True" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50"/>
+            <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Maximum="255" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50"/>
             <TextBox x:Name="gValue" Grid.Column="2" Grid.Row="1" Height="20" Margin="5,0" Text="{Binding ElementName=gSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock Grid.Row="2" Text="B" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Maximum="255" IsSnapToTickEnabled="True" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50"/>
+            <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Maximum="255" ValueChanged="slider_Chenged" TickPlacement="TopLeft" TickFrequency="50"/>
             <TextBox x:Name="bValue" Grid.Column="2" Grid.Row="2" Height="20" Margin="5,0" Text="{Binding ElementName=bSlider,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
             <ComboBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" SelectedValue="{Binding Color}" SelectionChanged="ComboBox_SelectionChanged">
@@ -58,7 +58,7 @@
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <Button x:Name="stockButton" Grid.Row="0" Content="STOCK" Margin="10" Click="stockButton_Click"/>
-            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged"/>
+            <ListBox x:Name="stockList" Grid.Row="1" Margin="10" SelectionChanged="stockList_SelectionChanged" IsSynchronizedWithCurrentItem="False"/>
 
         </Grid>
     </Grid>
