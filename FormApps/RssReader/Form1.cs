@@ -26,8 +26,6 @@ namespace RssReader {
             cbHistory.Text = tbLink.Text;
             //記事一覧をリセット
             lbRssTitle.Items.Clear();
-            //試験用url
-            //https://news.yahoo.co.jp/rss/categories/it.xml
 
             //urlを取得し情報をクラスに格納
             using (var wc = new WebClient()) {
@@ -42,7 +40,7 @@ namespace RssReader {
                     }
                 }
                 catch (Exception) {
-                    MessageBox.Show("***URLが正しくありません***");
+                    MessageBox.Show("URLが正しくありません", "エラーメッセージ");
                 }
             }
         }
@@ -76,25 +74,38 @@ namespace RssReader {
 
         //お気に入り登録ボタンを押したときの処理
         private void btFavorite_Click(object sender, EventArgs e) {
-            TextBoxCheck();
-            try {
+            if(TextBoxCheck() == true) {
                 string fTitle = tbFavorite.Text;
                 categoryDic.Add(fTitle, tbLink.Text);
                 cbFavorite.Items.Add(fTitle);
                 tbFavorite.Clear();
                 cbFavorite.Text = fTitle;
             }
-            catch {
-            }
         }
 
-        private void TextBoxCheck() {
+        private bool TextBoxCheck() {
+            bool sw = true;
+            //URL未入力
             if (tbLink.Text.Equals("")) {
-                MessageBox.Show("URLが入力されていません。");
+                MessageBox.Show("URLが入力されていません。","エラーメッセージ");
+                sw = false;
             }
+            //お気に入りの名前未入力
             if (tbFavorite.Text.Equals("")) {
-                MessageBox.Show("お気に入りに登録するためには、先に名前を入力する必要があります。");
+                MessageBox.Show("お気に入りに登録するためには、先に名前を入力する必要があります。", "エラーメッセージ");
+                sw = false;
             }
+            //URLが不正確
+            try {
+                using (var wc = new WebClient()) {
+                    var url = wc.OpenRead(tbLink.Text);
+                }
+            }catch {
+                if(!tbLink.Text.Equals(""))
+                    MessageBox.Show("URLが正しくありません", "エラーメッセージ");
+                sw = false;
+            }
+            return sw;
         }
 
         //お気に入り一覧を表示するコンボボックス選択時の処理
@@ -114,7 +125,6 @@ namespace RssReader {
 
         private void TextChange(object sender,EventArgs e) {
             btGet.Enabled = (tbLink.Text.Equals("")) ? false : true;
-            btFavorite.Enabled = (tbFavorite.Text.Equals("") || tbLink.Text.Equals("")) ? false : true;
         }
     }
 }

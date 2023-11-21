@@ -52,11 +52,13 @@ namespace RssReader {
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(804, 12);
+            this.btGet.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btGet.Location = new System.Drawing.Point(833, 12);
             this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(75, 31);
+            this.btGet.Size = new System.Drawing.Size(35, 31);
             this.btGet.TabIndex = 1;
-            this.btGet.Text = "取得";
+            this.btGet.Text = "🔎";
+            this.toolTip1.SetToolTip(this.btGet, "入力されたURLからニュースを取得します");
             this.btGet.UseVisualStyleBackColor = true;
             this.btGet.Click += new System.EventHandler(this.btGet_Click);
             // 
@@ -66,9 +68,9 @@ namespace RssReader {
             this.lbRssTitle.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 16;
-            this.lbRssTitle.Location = new System.Drawing.Point(31, 97);
+            this.lbRssTitle.Location = new System.Drawing.Point(31, 113);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(1121, 132);
+            this.lbRssTitle.Size = new System.Drawing.Size(1121, 116);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
@@ -200,7 +202,7 @@ namespace RssReader {
             this.tbLink.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbLink.Location = new System.Drawing.Point(31, 13);
             this.tbLink.Name = "tbLink";
-            this.tbLink.Size = new System.Drawing.Size(767, 28);
+            this.tbLink.Size = new System.Drawing.Size(796, 28);
             this.tbLink.TabIndex = 9;
             this.tbLink.TextChanged += new System.EventHandler(this.TextChange);
             // 
@@ -257,9 +259,9 @@ namespace RssReader {
             // 
             this.cbHistory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbHistory.FormattingEnabled = true;
-            this.cbHistory.Location = new System.Drawing.Point(540, 66);
+            this.cbHistory.Location = new System.Drawing.Point(495, 61);
             this.cbHistory.Name = "cbHistory";
-            this.cbHistory.Size = new System.Drawing.Size(339, 20);
+            this.cbHistory.Size = new System.Drawing.Size(373, 20);
             this.cbHistory.TabIndex = 15;
             this.toolTip1.SetToolTip(this.cbHistory, "履歴一覧を表示します");
             // 
@@ -275,11 +277,11 @@ namespace RssReader {
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(499, 70);
+            this.label2.Location = new System.Drawing.Point(29, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 16;
-            this.label2.Text = "前回：";
+            this.label2.Text = "記事一覧";
             // 
             // Form1
             // 
@@ -325,11 +327,11 @@ namespace RssReader {
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbHistory;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label2;
     }
 }
 
