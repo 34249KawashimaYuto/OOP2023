@@ -1,5 +1,5 @@
 ﻿
-namespace RssReader {
+namespace sampleApi {
     partial class Form1 {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -298,7 +298,7 @@ namespace RssReader {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "RssProgram";
+            this.Text = "Form1";
             this.gbCategory.ResumeLayout(false);
             this.gbCategory.PerformLayout();
             this.groupBox1.ResumeLayout(false);

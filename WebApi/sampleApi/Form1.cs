@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace RssReader {
+namespace sampleApi {
     public partial class Form1 : Form {
         IEnumerable<ItemData> nodes;
         Dictionary<string, string> categoryDic = new Dictionary<string, string>();
@@ -18,7 +18,7 @@ namespace RssReader {
             InitializeComponent();
             Category();
             btGet.Enabled = (tbLink.Text.Equals("")) ? false : true;
-            //btFavorite.Enabled = (tbFavorite.Text.Equals("") || tbLink.Text.Equals("")) ? false : true;
+            btFavorite.Enabled = (tbFavorite.Text.Equals("") || tbLink.Text.Equals("")) ? false : true;
         }
         private void btGet_Click(object sender, EventArgs e) {
             //履歴に追加
@@ -76,7 +76,6 @@ namespace RssReader {
 
         //お気に入り登録ボタンを押したときの処理
         private void btFavorite_Click(object sender, EventArgs e) {
-            TextBoxCheck();
             try {
                 string fTitle = tbFavorite.Text;
                 categoryDic.Add(fTitle, tbLink.Text);
@@ -85,15 +84,9 @@ namespace RssReader {
                 cbFavorite.Text = fTitle;
             }
             catch {
-            }
-        }
-
-        private void TextBoxCheck() {
-            if (tbLink.Text.Equals("")) {
-                MessageBox.Show("URLが入力されていません。");
-            }
-            if (tbFavorite.Text.Equals("")) {
-                MessageBox.Show("お気に入りに登録するためには、先に名前を入力する必要があります。");
+                if (tbFavorite.Text.Equals(null)) {
+                    MessageBox.Show("名前が入力されていません");
+                }
             }
         }
 
@@ -111,6 +104,8 @@ namespace RssReader {
         private void btFavorite_MouseHover(object sender, EventArgs e) {
             btFavorite.Text = "★";
         }
+        //星印を反転させるメソッド
+        //private string Button_TextChange(bool b) => b ? "★" : "☆";
 
         private void TextChange(object sender,EventArgs e) {
             btGet.Enabled = (tbLink.Text.Equals("")) ? false : true;
